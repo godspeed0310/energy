@@ -1,4 +1,5 @@
 import 'package:energy/backend/app/app.router.dart';
+import 'package:energy/frontend/shared/shared_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -14,6 +15,7 @@ class EnergyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Energy',
+      theme: Themes.light,
       navigatorKey: StackedService.navigatorKey,
       onGenerateRoute: StackedRouter().onGenerateRoute,
     );

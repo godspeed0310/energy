@@ -5,6 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 class Themes {
   static ThemeData light = ThemeData(
     scaffoldBackgroundColor: AppColors.background,
+    listTileTheme: ListTileThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      tileColor: AppColors.cardColor,
+    ),
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor: AppColors.primary80,
       indicatorColor: AppColors.indicatorColor,
@@ -13,24 +19,36 @@ class Themes {
           color: AppColors.labelColor,
         ),
       ),
-      labelTextStyle: MaterialStateProperty.all(
-        GoogleFonts.dmSans(
-          fontWeight: FontWeight.w500,
-          fontSize: 12,
-          height: 1.33,
-          color: AppColors.labelColor,
-        ),
-      ),
+      labelTextStyle: MaterialStateProperty.all(CustomTypography.mediumLabel),
     ),
     appBarTheme: AppBarTheme(
       elevation: 0,
       backgroundColor: AppColors.background,
-      titleTextStyle: GoogleFonts.dmSans(
-        color: AppColors.titleColor,
-        fontSize: 24,
-        height: 1.33,
-      ),
+      titleTextStyle: CustomTypography.smallHeadline,
     ),
+  );
+}
+
+class CustomTypography {
+  static TextStyle mediumTitle = GoogleFonts.dmSans(
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+    height: 1.5,
+  );
+  static TextStyle smallHeadline = GoogleFonts.dmSans(
+    color: AppColors.titleColor,
+    fontSize: 24,
+    height: 1.33,
+  );
+  static TextStyle mediumLabel = GoogleFonts.dmSans(
+    fontWeight: FontWeight.w500,
+    fontSize: 12,
+    height: 1.33,
+    color: AppColors.labelColor,
+  );
+  static TextStyle smallBody = GoogleFonts.dmSans(
+    fontSize: 12,
+    height: 1.33,
   );
 }
 

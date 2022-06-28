@@ -1,3 +1,5 @@
+import 'package:energy/backend/data/data.dart';
+import 'package:energy/frontend/widgets/charge_tile.dart';
 import 'package:flutter/material.dart';
 
 class HistoryTab extends StatelessWidget {
@@ -5,9 +7,25 @@ class HistoryTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('History'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Charging History'),
+        toolbarHeight: 80,
+      ),
+      body: ListView.separated(
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 24),
+        physics: const BouncingScrollPhysics(),
+        itemCount: chargeData.length,
+        itemBuilder: (context, index) {
+          return ChargeTile(
+            charge: chargeData[index],
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const SizedBox(
+            height: 16,
+          );
+        },
       ),
     );
   }

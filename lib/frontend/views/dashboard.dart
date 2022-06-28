@@ -20,6 +20,7 @@ class DashboardView extends StatelessWidget {
           value: defaultSystemOverlay,
           child: Scaffold(
             body: PageView(
+              physics: const NeverScrollableScrollPhysics(),
               controller: model.pageController,
               children: const [
                 MapTab(),

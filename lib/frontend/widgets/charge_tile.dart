@@ -1,6 +1,7 @@
 import 'package:energy/backend/models/charge.dart';
 import 'package:energy/frontend/shared/shared_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 extension ChargeStatusExtension on ChargeStatus {
   String get status {
@@ -66,6 +67,8 @@ class ChargeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool hasDate = charge.date != '' && charge.date.isNotEmpty;
+
     return InkWell(
       borderRadius: BorderRadius.circular(8),
       onTap: () {},
@@ -79,9 +82,14 @@ class ChargeTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              charge.chargeId,
-              style: CustomTypography.mediumLabel,
+            Opacity(
+              opacity: 0.5,
+              child: Text(
+                charge.chargeId,
+                style: CustomTypography.mediumLabel.copyWith(
+                  color: Theme.of(context).textTheme.bodyLarge!.color,
+                ),
+              ),
             ),
             const SizedBox(
               height: 8,
@@ -89,6 +97,18 @@ class ChargeTile extends StatelessWidget {
             Text(
               charge.location,
               style: CustomTypography.mediumTitle,
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: hasDate ? 8 : 0),
+              child: hasDate
+                  ? Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        charge.date,
+                        style: GoogleFonts.dmSans(),
+                      ),
+                    )
+                  : const SizedBox(),
             ),
             const SizedBox(
               height: 8,
